@@ -31,7 +31,7 @@ public class Test {
 
         System.out.println(" ");
         System.out.println(pro1.getName());
-        System.out.println(pro2.getSum());
+        System.out.println(pro2.getBalance());
 
     }
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 public class Debt extends Process implements MeasurableInRubles{
 
-    float sum;
+    float balance;
     LocalDate deadline;
 
 
@@ -22,13 +22,17 @@ public class Debt extends Process implements MeasurableInRubles{
         System.out.println("Debt created");
     }
 
+
+
+
+
     @Override
-    public float getSum() {
-        return sum;
+    public float getBalance() {
+        return balance;
     }
 
-    public void setSum(float sum) {
-        this.sum = sum;
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 
     public LocalDate getDeadline() {
@@ -45,7 +49,7 @@ public class Debt extends Process implements MeasurableInRubles{
      */
     @Override
     public LocalDate getStartDate() {
-        System.out.println("owes me " + sum + " from " + startDate);
+        System.out.println("owes me " + balance + " from " + startDate);
         return this.startDate;
     }
 

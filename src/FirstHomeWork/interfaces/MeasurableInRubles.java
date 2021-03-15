@@ -2,7 +2,7 @@ package FirstHomeWork.interfaces;
 
 public interface MeasurableInRubles {
 
-    float getSum();
+    float getBalance();
 
     default long getAnswer() {
         return 42;
