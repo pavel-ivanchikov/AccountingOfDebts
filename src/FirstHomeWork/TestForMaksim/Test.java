@@ -21,7 +21,7 @@ public class Test {
         Person pro1 = pro.getNewPerson("Alex");
         System.out.println("создали процесс Человек, теперь можем брать в долг у друг у друга");
 
-        Debt pro2 = pro1.getNewDebt(3000);
+        Debt pro2 = pro1.getNewDebt();
         System.out.println("создали процесс Долг у конкретного человека.");
 
         System.out.println(" ");

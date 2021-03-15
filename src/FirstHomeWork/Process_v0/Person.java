@@ -30,13 +30,8 @@ public class Person extends Process implements HavingName {
         return this.startDate;
     }
 
-    /**
-     *
-     * @param sum - ..something
-     * @return debt
-     */
-    public Debt getNewDebt(float sum) {
-        return new Debt(this, sum);
+    public Debt getNewDebt() {
+        return new Debt(this);
     }
 
     /**

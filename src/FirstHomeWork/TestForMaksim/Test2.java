@@ -42,9 +42,11 @@ public class Test2 {
             for (int i = 0; i < 5; i++) {
                 Person somePerson = myLife.getNewPerson("Имя" + i);
                 arrayList1.add(somePerson);
-                Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
+                //Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
+                Debt debt1 = somePerson.getNewDebt();
                 arrayList1.add(debt1);
-                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
+//                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
+                Debt debt2 = somePerson.getNewDebt();
                 arrayList1.add(debt2);
             }
 
@@ -62,11 +64,14 @@ public class Test2 {
             for (int i = 0; i < 3; i++) {
                 Person somePerson = myLife.getNewPerson("Имя" + i);
                 arrayList2.add(somePerson);
-                Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
+                //Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
+                Debt debt1 = somePerson.getNewDebt();
                 arrayList2.add(debt1);
-                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
+//                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
+                Debt debt2 = somePerson.getNewDebt();
                 arrayList2.add(debt2);
-                Debt debt3 = somePerson.getNewDebt((i + 1) * 300);
+//                Debt debt3 = somePerson.getNewDebt((i + 1) * 300);
+                Debt debt3 = somePerson.getNewDebt();
                 arrayList2.add(debt3);
             }
 

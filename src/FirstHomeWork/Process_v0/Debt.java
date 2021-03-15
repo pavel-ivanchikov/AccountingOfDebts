@@ -3,7 +3,6 @@ package FirstHomeWork.Process_v0;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Class represents debt process from certain person, parent process.
@@ -13,19 +12,37 @@ import java.util.Date;
 public class Debt extends Process implements MeasurableInRubles{
 
     float sum;
+    LocalDate deadline;
 
-    Debt(Person person, float sum) {
+
+
+    //primary constructor
+    Debt(Person person) {
         this.parent = person;
-        this.sum = sum;
         System.out.println("Debt created");
     }
 
+    @Override
+    public float getSum() {
+        return sum;
+    }
+
+    public void setSum(float sum) {
+        this.sum = sum;
+    }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
 
     /**
      * method for "Дефолтное поведение (заданное в абстрактном классе)
      * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
      */
-
     @Override
     public LocalDate getStartDate() {
         System.out.println("owes me " + sum + " from " + startDate);
@@ -37,11 +54,6 @@ public class Debt extends Process implements MeasurableInRubles{
      */
     public void doSomething() {
         System.out.println("Method of Debt");
-    }
-
-    @Override
-    public float getSum() {
-        return this.sum;
     }
 
 }
