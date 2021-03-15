@@ -23,26 +23,16 @@ public abstract class Process {
     {
         startDate = LocalDate.now();
         logBook = new LinkedList<>();
-        addMessage(ProcessServiceMessages.OPEN.toString() + " " + this.getClass().getSimpleName());
+        addMessageToLogBook(ProcessServiceMessages.OPEN.toString());
 
     }
 
 
-    public void addMessage(String text){
-
-        Message<LocalDate, String> message = new Message<>(LocalDate.now(), text);
+    public void addMessageToLogBook(String text){
+        Message<LocalDate, String> message = new Message<LocalDate, String>(LocalDate.now(), text);
         logBook.add(message);
-
     }
 
-   /* public void readLogBook (){
-
-
-
-        Message message = new Message(LocalDate.now(),text);
-        logBook.add(message);
-
-    };*/
 
     public abstract void doSomething();
 

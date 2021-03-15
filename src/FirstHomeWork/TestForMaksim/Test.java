@@ -20,10 +20,10 @@ public class Test {
         System.out.println("создали первый и основной процесс, который породит все остальные процессы");
 
         Person person = myLife.getNewPerson("Alex");
-        System.out.println("создали процесс Человек, теперь можем брать в долг у друг у друга");
+//        System.out.println("создали процесс Человек, теперь можем брать в долг у друг у друга");
 
         Debt debt = person.getNewDebt();
-        System.out.println("создали процесс Долг у конкретного человека.");
+//        System.out.println("создали процесс Долг у конкретного человека.");
 
         LogBookReader lbr = new LogBookReader();
         lbr.read(person);
