@@ -14,7 +14,6 @@ public class Person extends Process implements HavingName {
 
     Person(Process parent, String name) {
         this.parent = parent;
-        System.out.println("The new Person is in the my system");
         this.name = name;
     }
 

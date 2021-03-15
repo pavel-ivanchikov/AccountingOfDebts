@@ -1,8 +1,9 @@
 package FirstHomeWork.Process_v0;
+import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
 import java.util.List;
-//import jav afx.util.Pair;
 
 /**
  * Процесс - это сущность, порождаемая другим процессом
@@ -10,23 +11,38 @@ import java.util.List;
  * Пока буду называть эти комментарии(пометки) - сообщениями, служебными или рукописными.
  * Прошлое процесса неизменно, можно добавлять сообщения о прошлом в настоящий момент.
  */
+
 public abstract class Process {
     
     Process parent;
+    List<Message<LocalDate, String>> logBook;
 
     LocalDate startDate;
 
+
     {
-        System.out.println("init Process");
         startDate = LocalDate.now();
+        logBook = new LinkedList<>();
+        addMessage(ProcessServiceMessages.OPEN.toString() + " " + this.getClass().getSimpleName());
+
     }
 
-    /**
-     * Здесь нужно создать основное поле класса - список сообщений.
-     */
 
-   // List<Pair<LocalDate,String>> mainInfo = new List<>;
+    public void addMessage(String text){
 
+        Message<LocalDate, String> message = new Message<>(LocalDate.now(), text);
+        logBook.add(message);
+
+    }
+
+   /* public void readLogBook (){
+
+
+
+        Message message = new Message(LocalDate.now(),text);
+        logBook.add(message);
+
+    };*/
 
     public abstract void doSomething();
 
@@ -35,8 +51,22 @@ public abstract class Process {
      * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
      */
 
-    public LocalDate getStartDate() {
+    public java.time.LocalDate getStartDate() {
         return this.startDate;
     }
+
+    static class Message<LocalDate, String> {
+        private LocalDate date;
+        private String text;
+        public Message(LocalDate date, String text){
+            this.date = date;
+            this.text = text;
+        }
+        public LocalDate getDate(){ return date; }
+        public String getText(){ return text; }
+        public void setDate(LocalDate date){ this.date = date; }
+        public void setText(String text){ this.text = text; }
+    }
+
 
 }

@@ -15,16 +15,10 @@ public class Debt extends Process implements MeasurableInRubles{
     LocalDate deadline;
 
 
-
     //primary constructor
     Debt(Person person) {
         this.parent = person;
-        System.out.println("Debt created");
     }
-
-
-
-
 
     @Override
     public float getBalance() {

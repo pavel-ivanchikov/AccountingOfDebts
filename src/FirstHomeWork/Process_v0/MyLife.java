@@ -9,7 +9,6 @@ public class MyLife extends Process {
 
     public MyLife() {
         parent = null;
-        System.out.println("MyLife created");
     }
 
     /**

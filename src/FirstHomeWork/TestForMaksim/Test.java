@@ -1,6 +1,7 @@
 package FirstHomeWork.TestForMaksim;
 
 
+import FirstHomeWork.Process_v0.LogBookReader;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.Debt;
@@ -15,23 +16,27 @@ public class Test {
 
         System.out.println("Тест начался");
 
-        MyLife pro = new MyLife();
+        MyLife myLife = new MyLife();
         System.out.println("создали первый и основной процесс, который породит все остальные процессы");
 
-        Person pro1 = pro.getNewPerson("Alex");
+        Person person = myLife.getNewPerson("Alex");
         System.out.println("создали процесс Человек, теперь можем брать в долг у друг у друга");
 
-        Debt pro2 = pro1.getNewDebt();
+        Debt debt = person.getNewDebt();
         System.out.println("создали процесс Долг у конкретного человека.");
 
-        System.out.println(" ");
-        pro.doSomething();
-        pro1.doSomething();
-        pro2.doSomething();
+        LogBookReader lbr = new LogBookReader();
+        lbr.read(person);
+        lbr.read(debt);
 
         System.out.println(" ");
-        System.out.println(pro1.getName());
-        System.out.println(pro2.getBalance());
+        myLife.doSomething();
+        person.doSomething();
+        debt.doSomething();
+
+        System.out.println(" ");
+        System.out.println(person.getName());
+        System.out.println(debt.getBalance());
 
     }
 }
