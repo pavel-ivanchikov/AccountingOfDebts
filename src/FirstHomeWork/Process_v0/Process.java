@@ -13,18 +13,31 @@ import java.util.List;
  */
 
 public abstract class Process {
-    
+
     Process parent;
+
+    /**
+     * Это главное свойство объекта процесс
+     */
+
     List<Message<LocalDate, String>> logBook;
 
+    /**
+     * наверно временные поля
+     */
+
     LocalDate startDate;
-
-
+    
     {
         startDate = LocalDate.now();
         logBook = new LinkedList<>();
         addMessageToLogBook(ProcessServiceMessages.OPEN.toString());
     }
+
+    /**
+     * Этот конструктор сделал чтобы сформировать второе сообщение в журнале
+     * не в каждом наследнике, а сделать это в одном месте в родительском классе.
+     */
 
     public Process(Process parent){
         this.parent = parent;

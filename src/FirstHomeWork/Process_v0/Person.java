@@ -6,7 +6,8 @@ import java.time.LocalDate;
 
 /**
  * Это процесс, содержащий информацию об определенном человеке, и порождающие процессы долгов
- * В этот процесс попадают сообщения касающиеся личности человека берущего или дающего в долг.
+ * В этот процесс попадают сообщения касающиеся личности человека берущего или дающего в долг,
+ * и которые нельзя записать в один из существующих долгов.
  */
 public class Person extends Process implements HavingName {
 
@@ -15,6 +16,10 @@ public class Person extends Process implements HavingName {
     Person(Process parent, String name) {
         super(parent);
         this.name = name;
+    }
+
+    public Debt getNewDebt() {
+        return new Debt(this);
     }
 
 
@@ -27,10 +32,6 @@ public class Person extends Process implements HavingName {
     public LocalDate getStartDate() {
         System.out.println(name + " appeared in my system in " + startDate);
         return this.startDate;
-    }
-
-    public Debt getNewDebt() {
-        return new Debt(this);
     }
 
     /**
