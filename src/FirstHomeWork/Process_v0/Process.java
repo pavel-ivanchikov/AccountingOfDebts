@@ -27,7 +27,8 @@ public abstract class Process {
      */
 
     LocalDate startDate;
-    
+
+
     {
         startDate = LocalDate.now();
         logBook = new LinkedList<>();
