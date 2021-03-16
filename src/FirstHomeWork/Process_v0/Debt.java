@@ -16,8 +16,8 @@ public class Debt extends Process implements MeasurableInRubles{
 
 
     //primary constructor
-    Debt(Person person) {
-        this.parent = person;
+    Debt(Process parent) {
+        super(parent);
     }
 
     @Override

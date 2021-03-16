@@ -13,7 +13,7 @@ public class Person extends Process implements HavingName {
     String name;
 
     Person(Process parent, String name) {
-        this.parent = parent;
+        super(parent);
         this.name = name;
     }
 

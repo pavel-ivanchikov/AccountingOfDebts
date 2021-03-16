@@ -8,7 +8,7 @@ package FirstHomeWork.Process_v0;
 public class MyLife extends Process {
 
     public MyLife() {
-        parent = null;
+        super(null);
     }
 
     /**

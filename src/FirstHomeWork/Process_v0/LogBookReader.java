@@ -26,7 +26,12 @@ public class LogBookReader {
         if (firstWord.equals("OPEN")){
             System.out.println("new object of " + processName + " class was created");
         }
-        else System.out.println(processName + " was closed!");
+        else if (firstWord.equals("CLOSE")) {
+            System.out.println(processName + " was closed!");
+        }
+        else {
+            System.out.println(message);
+        }
     }
 
     /**

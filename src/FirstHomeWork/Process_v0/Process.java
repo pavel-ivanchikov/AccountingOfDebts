@@ -24,12 +24,15 @@ public abstract class Process {
         startDate = LocalDate.now();
         logBook = new LinkedList<>();
         addMessageToLogBook(ProcessServiceMessages.OPEN.toString());
-
     }
 
+    public Process(Process parent){
+        this.parent = parent;
+        addMessageToLogBook("the process has become separate from " + parent);
+    }
 
     public void addMessageToLogBook(String text){
-        Message<LocalDate, String> message = new Message<LocalDate, String>(LocalDate.now(), text);
+        Message<LocalDate, String> message = new Message<>(LocalDate.now(), text);
         logBook.add(message);
     }
 

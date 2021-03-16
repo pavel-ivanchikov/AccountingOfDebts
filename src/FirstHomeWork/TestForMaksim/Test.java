@@ -26,6 +26,7 @@ public class Test {
 //        System.out.println("создали процесс Долг у конкретного человека.");
 
         LogBookReader lbr = new LogBookReader();
+        lbr.read(myLife);
         lbr.read(person);
         lbr.read(debt);
 
