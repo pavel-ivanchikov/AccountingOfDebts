@@ -28,11 +28,9 @@ public abstract class Process {
 
     LocalDate startDate;
 
-
     {
         startDate = LocalDate.now();
         logBook = new LinkedList<>();
-        addMessageToLogBook(ProcessServiceMessages.OPEN.toString());
     }
 
     /**
@@ -42,13 +40,27 @@ public abstract class Process {
 
     public Process(Process parent){
         this.parent = parent;
-        addMessageToLogBook("the process has become separate from " + parent);
+        addMessageToLogBook(ProcessServiceMessages.OPEN.toString() + "_"
+                + this.getClass().getSimpleName()
+                + " The process has become separate from "
+                + parent);
     }
 
+    /**
+     *
+     * Медод добавляет сообщение в журнал, служеное или обычное.
+     * @param text любое текстовое сообщение
+     */
     public void addMessageToLogBook(String text){
         Message<LocalDate, String> message = new Message<>(LocalDate.now(), text);
         logBook.add(message);
     }
+
+    /*public String formatCommentText(String string) {
+        String serviceMessage;
+        Process parent;
+    }*/
+
 
 
     public abstract void doSomething();

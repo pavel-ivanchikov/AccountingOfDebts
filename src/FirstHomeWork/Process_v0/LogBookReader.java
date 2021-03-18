@@ -48,4 +48,5 @@ public class LogBookReader {
     public String getNameOfClass(Object obj){
         return obj.getClass().getSimpleName();
     }
+    
 }

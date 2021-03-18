@@ -1,5 +1,7 @@
 package FirstHomeWork.Process_v0;
 
+import FirstHomeWork.Process_v0.ServiceMessages.MyLifeServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.PersonServiceMessages;
 import FirstHomeWork.interfaces.HavingName;
 
 import java.time.LocalDate;
@@ -19,6 +21,7 @@ public class Person extends Process implements HavingName {
     }
 
     public Debt getNewDebt() {
+        addMessageToLogBook(PersonServiceMessages.NEW_DEBT.toString() +  " У " + name + "появился новый долг");
         return new Debt(this);
     }
 

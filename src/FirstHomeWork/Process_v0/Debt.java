@@ -1,5 +1,8 @@
 package FirstHomeWork.Process_v0;
 
+import FirstHomeWork.Process_v0.ServiceMessages.DebtServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.PersonServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
 import java.time.LocalDate;
@@ -20,6 +23,20 @@ public class Debt extends Process implements MeasurableInRubles{
         super(parent);
     }
 
+    public void iGive (float amount){
+        Person person = (Person) parent;
+        addMessageToLogBook(DebtServiceMessages.I_GIVE.toString()
+                + " У " + person.name + "баланс увеличился на" + amount);
+        balance = balance + amount;
+    }
+
+    public void iTake (float amount){
+        Person person = (Person) parent;
+        addMessageToLogBook(DebtServiceMessages.I_TAKE.toString()
+                + " У " + person.name + "баланс уменьшился на" + amount);
+        balance = balance - amount;
+    }
+
     @Override
     public float getBalance() {
         return balance;
@@ -28,6 +45,7 @@ public class Debt extends Process implements MeasurableInRubles{
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
 
     public LocalDate getDeadline() {
         return deadline;

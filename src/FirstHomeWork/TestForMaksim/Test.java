@@ -16,28 +16,36 @@ public class Test {
 
         System.out.println("Тест начался");
 
+        System.out.println(" ");
+
         MyLife myLife = new MyLife();
         System.out.println("создали первый и основной процесс, который породит все остальные процессы");
 
-        Person person = myLife.getNewPerson("Alex");
-//        System.out.println("создали процесс Человек, теперь можем брать в долг у друг у друга");
+        System.out.println(" ");
 
+        Person person = myLife.getNewPerson("Alex");
         Debt debt = person.getNewDebt();
-//        System.out.println("создали процесс Долг у конкретного человека.");
+
+        myLife.addMessageToLogBook("Жизнь продолжается");
+        person.addMessageToLogBook("Жизнь человека то же продолжается");
+        debt.addMessageToLogBook("Жизнь долга тяжела и неказиста.");
+
 
         LogBookReader lbr = new LogBookReader();
         lbr.read(myLife);
+        System.out.println(" ");
         lbr.read(person);
+        System.out.println(" ");
         lbr.read(debt);
 
-        System.out.println(" ");
+/*        System.out.println(" ");
         myLife.doSomething();
         person.doSomething();
         debt.doSomething();
 
         System.out.println(" ");
         System.out.println(person.getName());
-        System.out.println(debt.getBalance());
+        System.out.println(debt.getBalance());*/
 
     }
 }
