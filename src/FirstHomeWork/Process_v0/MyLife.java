@@ -1,8 +1,6 @@
 package FirstHomeWork.Process_v0;
 
-import FirstHomeWork.Process_v0.ServiceMessages.MyLifeServiceMessages;
-import FirstHomeWork.Process_v0.ServiceMessages.PersonServiceMessages;
-import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
 /**
  * Это Process, который описывает жизнь ведущего учёт долгов.
@@ -13,17 +11,18 @@ import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
 public class MyLife extends Process {
 
     public MyLife() {
+
         super(null);
     }
 
     /**
-     * @param name of person
      * @return not necessarily new person in my life,
      * that i mention and it becomes separate entity since now
      */
-    public Person getNewPerson(String name) {
-        addMessageToLogBook(MyLifeServiceMessages.NEW_PERSON.toString() + "_" + name + " . появился в моей системе новый человек");
-        return new Person(this, name);
+    public Person getNewPerson() {
+        Person person = new Person(this);
+        addMessageToLogBook(ServiceMessages.NPR.toString() + " " + "здесь должен быть id этого нового человека");
+        return person;
     }
 
     /**

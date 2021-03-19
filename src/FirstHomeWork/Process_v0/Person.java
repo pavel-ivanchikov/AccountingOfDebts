@@ -1,7 +1,6 @@
 package FirstHomeWork.Process_v0;
 
-import FirstHomeWork.Process_v0.ServiceMessages.MyLifeServiceMessages;
-import FirstHomeWork.Process_v0.ServiceMessages.PersonServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.HavingName;
 
 import java.time.LocalDate;
@@ -15,14 +14,19 @@ public class Person extends Process implements HavingName {
 
     String name;
 
-    Person(Process parent, String name) {
+    Person(Process parent) {
         super(parent);
-        this.name = name;
+    }
+
+    public void setName(String string) {
+        this.name = string;
+        addMessageToLogBook(ServiceMessages.SNM.toString() + " " + this.name);
     }
 
     public Debt getNewDebt() {
-        addMessageToLogBook(PersonServiceMessages.NEW_DEBT.toString() +  " У " + name + "появился новый долг");
-        return new Debt(this);
+        Debt debt = new Debt(this);
+        addMessageToLogBook(ServiceMessages.NDB.toString() + " " + "здесь должен быть id этого нового долга");
+        return debt;
     }
 
 

@@ -35,6 +35,7 @@ public class Test2 {
 
         // Создаю первый список
         // Создам 5 человек и у каждого по 2 долга.
+/*
         try {
 
             ArrayList<Process> arrayList1 = new ArrayList<>(15);
@@ -80,6 +81,8 @@ public class Test2 {
         }
 
 
+
+*/
     }
 
 }

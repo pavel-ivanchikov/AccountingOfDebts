@@ -1,8 +1,6 @@
 package FirstHomeWork.Process_v0;
 
-import FirstHomeWork.Process_v0.ServiceMessages.DebtServiceMessages;
-import FirstHomeWork.Process_v0.ServiceMessages.PersonServiceMessages;
-import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
+import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
 import java.time.LocalDate;
@@ -17,23 +15,22 @@ public class Debt extends Process implements MeasurableInRubles{
     float balance;
     LocalDate deadline;
 
-
     //primary constructor
     Debt(Process parent) {
         super(parent);
     }
 
+    public void setDeadLine(LocalDate localDate) {
+        this.deadline = localDate;
+        addMessageToLogBook(ServiceMessages.SDL.toString() + " " + this.deadline);
+    }
     public void iGive (float amount){
-        Person person = (Person) parent;
-        addMessageToLogBook(DebtServiceMessages.I_GIVE.toString()
-                + " У " + person.name + "баланс увеличился на" + amount);
+        addMessageToLogBook(ServiceMessages.IGV.toString() + " " + amount);
         balance = balance + amount;
     }
 
     public void iTake (float amount){
-        Person person = (Person) parent;
-        addMessageToLogBook(DebtServiceMessages.I_TAKE.toString()
-                + " У " + person.name + "баланс уменьшился на" + amount);
+        addMessageToLogBook(ServiceMessages.ITK.toString() + " " + amount);
         balance = balance - amount;
     }
 
