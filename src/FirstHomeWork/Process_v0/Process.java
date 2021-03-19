@@ -1,5 +1,6 @@
 package FirstHomeWork.Process_v0;
-import FirstHomeWork.Process_v0.ServiceMessages.ProcessServiceMessages;
+
+import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -9,7 +10,10 @@ import java.util.List;
  * Процесс - это сущность, порождаемая другим процессом
  * и хранящая журнал комметариев (пометок) о том что проиходит в рамках эго процесса.
  * Пока буду называть эти комментарии(пометки) - сообщениями, служебными или рукописными.
- * Прошлое процесса неизменно, можно добавлять сообщения о прошлом в настоящий момент.
+ * Прошлое процесса неизменно, можно добавлять сообщения о прошлом только в настоящем.
+ *
+ * Следующий шаг: сделать id процесса, а именно дату его первого сообщения буду считать id процесса.
+ * Для каждого процесса надо завести текстовый документ который будет называться датой первого сообщения.
  */
 
 public abstract class Process {
@@ -28,22 +32,16 @@ public abstract class Process {
 
     LocalDate startDate;
 
-    {
-        startDate = LocalDate.now();
-        logBook = new LinkedList<>();
-    }
-
     /**
      * Этот конструктор сделал чтобы сформировать второе сообщение в журнале
      * не в каждом наследнике, а сделать это в одном месте в родительском классе.
      */
 
     public Process(Process parent){
+        startDate = LocalDate.now();
+        logBook = new LinkedList<>();
         this.parent = parent;
-        addMessageToLogBook(ProcessServiceMessages.OPEN.toString() + "_"
-                + this.getClass().getSimpleName()
-                + " The process has become separate from "
-                + parent);
+        addMessageToLogBook(ServiceMessages.OPN.toString() + " " + parent);
     }
 
     /**
@@ -56,12 +54,9 @@ public abstract class Process {
         logBook.add(message);
     }
 
-    /*public String formatCommentText(String string) {
-        String serviceMessage;
-        Process parent;
-    }*/
-
-
+    /**
+     * method for "для чего-то из первой домашней работы"
+     */
 
     public abstract void doSomething();
 
