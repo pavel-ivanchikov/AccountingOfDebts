@@ -1,6 +1,6 @@
 package FirstHomeWork.TestForMaksim;
 
-import FirstHomeWork.Process_v0.LogBookReader;
+//import FirstHomeWork.Process_v0.LogBookReader;
 import FirstHomeWork.Process_v0.LogBookReaderSimple;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
@@ -90,6 +90,11 @@ public class Test {
         lbr.read(person);
         System.out.println(" ");
         lbr.read(debt);
+
+        System.out.println(" ");
+        System.out.println("id: " + myLife.getMainInfo());
+        person.getMainInfo();
+        debt.getMainInfo();
 
         System.out.println(" ");
         System.out.println("Имя человека: " + person.getName());

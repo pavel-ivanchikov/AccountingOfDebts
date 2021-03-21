@@ -34,8 +34,9 @@ public class Person extends Process implements HavingName {
      */
 
     @Override
-    public long getStart() {
-        System.out.println(name + " appeared in my system in " + start);
+    public long getMainInfo() {
+        System.out.println("id: " + start + " " +
+                name + " appeared in my system in " + logBook.get(0).getDate().withNano(0));
         return this.start;
     }
 

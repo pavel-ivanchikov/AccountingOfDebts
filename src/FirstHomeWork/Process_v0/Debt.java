@@ -1,5 +1,6 @@
 package FirstHomeWork.Process_v0;
 
+import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
@@ -49,8 +50,10 @@ public class Debt extends Process implements MeasurableInRubles{
      * @return дату старта в миллисекундах
      */
     @Override
-    public long getStart() {
-        System.out.println("owes me " + balance + " from " + start);
+    public long getMainInfo() {
+        Person person = (Person) this.parent;
+        System.out.println("id: " + start + " " + person.name +
+                " owes me " + balance + " to " + deadline.withNano(0));
         return this.start;
     }
 
