@@ -3,8 +3,6 @@ package FirstHomeWork.Process_v0;
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.HavingName;
 
-import java.time.LocalDate;
-
 /**
  * Это процесс, содержащий информацию об определенном человеке, и порождающие процессы долгов
  * В этот процесс попадают сообщения касающиеся личности человека берущего или дающего в долг,
@@ -25,7 +23,7 @@ public class Person extends Process implements HavingName {
 
     public Debt getNewDebt() {
         Debt debt = new Debt(this);
-        addMessageToLogBook(ServiceMessages.NDB.toString() + " " + "здесь должен быть id этого нового долга");
+        addMessageToLogBook(ServiceMessages.NDB.toString() + " " + debt.start);
         return debt;
     }
 
@@ -36,9 +34,9 @@ public class Person extends Process implements HavingName {
      */
 
     @Override
-    public LocalDate getStartDate() {
-        System.out.println(name + " appeared in my system in " + startDate);
-        return this.startDate;
+    public long getStart() {
+        System.out.println(name + " appeared in my system in " + start);
+        return this.start;
     }
 
     /**

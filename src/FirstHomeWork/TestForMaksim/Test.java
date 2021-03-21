@@ -1,12 +1,16 @@
 package FirstHomeWork.TestForMaksim;
 
 import FirstHomeWork.Process_v0.LogBookReader;
+import FirstHomeWork.Process_v0.LogBookReaderSimple;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.Debt;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.Scanner;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Цель проекта. Создать систему учёта долгов и должников и мыслей вокруг долгов.
@@ -31,23 +35,27 @@ import java.util.Scanner;
  *
  * В каждый процесс добавляю по одному сообщению
  *
- * Добавляю новое сообщение в MyLife вводя его с клавиатуры.
+ * Добавляю новое сообщение в MyLife вводя его с клавиатуры(пока закоментил, мешает тестировать)
  */
 
 public class Test {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
 
         System.out.println("Тест начался");
         MyLife myLife = new MyLife();
+        TimeUnit.SECONDS.sleep(1);
         myLife.addMessageToLogBook("Жизнь продолжается");
         Person person = myLife.getNewPerson();
+        TimeUnit.SECONDS.sleep(1);
         person.addMessageToLogBook("Все мысли косающиеся этого человека буду писать сюда");
         myLife.addMessageToLogBook("Все мысли которые не касаются нового человека я буду писать сюда");
         person.setName("Alex");
+        person.setName("Paul");
         Debt debt = person.getNewDebt();
+        TimeUnit.SECONDS.sleep(1);
         debt.iGive(1800);
-        debt.setDeadLine(LocalDate.now());
+        debt.setDeadLine(LocalDateTime.now());
         //=======================================================================================
         System.out.println("создали первый процесс MyLife который породит все остальные процессы");
         System.out.println("MyLife породил процесс Person");
@@ -73,11 +81,17 @@ public class Test {
         System.out.println(" ");
         System.out.println("Вывожу все 3 логбука которые есть");
         System.out.println(" ");
-        LogBookReader lbr = new LogBookReader();
+
+//        LogBookReader lbr = new LogBookReader();
+        LogBookReaderSimple lbr = new LogBookReaderSimple();
+
         lbr.read(myLife);
         System.out.println(" ");
         lbr.read(person);
         System.out.println(" ");
         lbr.read(debt);
+
+        System.out.println(" ");
+        System.out.println("Имя человека: " + person.getName());
     }
 }

@@ -3,7 +3,7 @@ package FirstHomeWork.Process_v0;
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Class represents debt process from certain person, parent process.
@@ -13,16 +13,16 @@ import java.time.LocalDate;
 public class Debt extends Process implements MeasurableInRubles{
 
     float balance;
-    LocalDate deadline;
+    LocalDateTime deadline;
 
     //primary constructor
     Debt(Process parent) {
         super(parent);
     }
 
-    public void setDeadLine(LocalDate localDate) {
-        this.deadline = localDate;
-        addMessageToLogBook(ServiceMessages.SDL.toString() + " " + this.deadline);
+    public void setDeadLine(LocalDateTime localDateTime) {
+        this.deadline = localDateTime;
+        addMessageToLogBook(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
     }
     public void iGive (float amount){
         addMessageToLogBook(ServiceMessages.IGV.toString() + " " + amount);
@@ -39,27 +39,19 @@ public class Debt extends Process implements MeasurableInRubles{
         return balance;
     }
 
-    public void setBalance(float balance) {
-        this.balance = balance;
-    }
-
-
-    public LocalDate getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
-    }
-
-    public void setDeadline(LocalDate deadline) {
-        this.deadline = deadline;
     }
 
     /**
      * method for "Дефолтное поведение (заданное в абстрактном классе)
      * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
+     * @return дату старта в миллисекундах
      */
     @Override
-    public LocalDate getStartDate() {
-        System.out.println("owes me " + balance + " from " + startDate);
-        return this.startDate;
+    public long getStart() {
+        System.out.println("owes me " + balance + " from " + start);
+        return this.start;
     }
 
     /**

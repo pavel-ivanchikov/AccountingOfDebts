@@ -15,12 +15,12 @@ public class LogBookReader {
         }
     }
 
-
     /**
      *
      * метод который будет комментировать стандартные действия из жизни процесса, все ENUMs
      *
      */
+
     public void makeStandardResponse(String message, String processName) {
         String firstWord = getFirstWordOfText(message);
         if (firstWord.equals("OPEN")){
