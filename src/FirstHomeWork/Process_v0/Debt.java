@@ -1,13 +1,13 @@
 package FirstHomeWork.Process_v0;
 
-import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
+import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 
 /**
- * Class represents debt process from certain person, parent process.
+ * Class represents debt process from certain person, reason process.
  * В этот процесс попадают сообщения касающиеся конкретного долга.
  */
 
@@ -17,22 +17,22 @@ public class Debt extends Process implements MeasurableInRubles{
     LocalDateTime deadline;
 
     //primary constructor
-    Debt(Process parent) {
+    Debt(Process parent) throws FileNotFoundException {
         super(parent);
     }
 
-    public void setDeadLine(LocalDateTime localDateTime) {
+    public void setDeadLine(LocalDateTime localDateTime) throws FileNotFoundException {
         this.deadline = localDateTime;
-        addMessageToLogBook(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
+        add(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
     }
-    public void iGive (float amount){
-        addMessageToLogBook(ServiceMessages.IGV.toString() + " " + amount);
+    public void iGive (float amount) throws FileNotFoundException {
         balance = balance + amount;
+        add(ServiceMessages.IGV.toString() + " " + amount);
     }
 
-    public void iTake (float amount){
-        addMessageToLogBook(ServiceMessages.ITK.toString() + " " + amount);
+    public void iTake (float amount) throws FileNotFoundException {
         balance = balance - amount;
+        add(ServiceMessages.ITK.toString() + " " + amount);
     }
 
     @Override
@@ -50,11 +50,11 @@ public class Debt extends Process implements MeasurableInRubles{
      * @return дату старта в миллисекундах
      */
     @Override
-    public long getMainInfo() {
-        Person person = (Person) this.parent;
-        System.out.println("id: " + start + " " + person.name +
+    public Long getMainInfo() {
+        Person person = (Person) this.reason;
+        System.out.println("id: " + id + " " + person.name +
                 " owes me " + balance + " to " + deadline.withNano(0));
-        return this.start;
+        return this.id;
     }
 
     /**
