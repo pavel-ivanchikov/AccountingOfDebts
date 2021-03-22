@@ -3,6 +3,8 @@ package FirstHomeWork.Process_v0;
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.HavingName;
 
+import java.io.*;
+
 /**
  * Это процесс, содержащий информацию об определенном человеке, и порождающие процессы долгов
  * В этот процесс попадают сообщения касающиеся личности человека берущего или дающего в долг,
@@ -12,18 +14,18 @@ public class Person extends Process implements HavingName {
 
     String name;
 
-    Person(Process parent) {
+    Person(Process parent) throws FileNotFoundException{
         super(parent);
     }
 
-    public void setName(String string) {
+    public void setName(String string) throws FileNotFoundException {
         this.name = string;
-        addMessageToLogBook(ServiceMessages.SNM.toString() + " " + this.name);
+        add(ServiceMessages.SNM.toString() + " " + this.name);
     }
 
-    public Debt getNewDebt() {
+    public Debt getNewDebt() throws FileNotFoundException {
         Debt debt = new Debt(this);
-        addMessageToLogBook(ServiceMessages.NDB.toString() + " " + debt.start);
+        add(ServiceMessages.NDB.toString() + " " + debt.id);
         return debt;
     }
 
@@ -34,10 +36,10 @@ public class Person extends Process implements HavingName {
      */
 
     @Override
-    public long getMainInfo() {
-        System.out.println("id: " + start + " " +
+    public Long getMainInfo() {
+        System.out.println("id: " + id + " " +
                 name + " appeared in my system in " + logBook.get(0).getDate().withNano(0));
-        return this.start;
+        return this.id;
     }
 
     /**

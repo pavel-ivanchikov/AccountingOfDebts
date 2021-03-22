@@ -5,6 +5,8 @@ import FirstHomeWork.Process_v0.Process;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.Debt;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -28,7 +30,7 @@ import java.util.Comparator;
  */
 public class Test2 {
 
-    public static void main(String[] args) throws NullPointerException {
+    public static void main(String[] args) throws NullPointerException, FileNotFoundException {
         // Создаём перевый процесс, которые пораждает все остальные
         MyLife myLife = new MyLife();
 
