@@ -61,6 +61,8 @@ public class Test {
         debt.setDeadLine(LocalDateTime.now());
         debt.add("Я дал ему деньги наликом, " +
                 "на остановке около метро площадь Мужества");
+        TimeUnit.SECONDS.sleep(1);
+        debt.iTake(1800);
         //=======================================================================================
         System.out.println("создали первый процесс MyLife который породит все остальные процессы");
         System.out.println("MyLife породил процесс Person");
@@ -100,5 +102,6 @@ public class Test {
 
         System.out.println(" ");
         System.out.println("Имя человека: " + person.getName());
+        System.out.println("Сколько должен: " + debt.getBalance());
     }
 }
