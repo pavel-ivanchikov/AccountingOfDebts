@@ -23,16 +23,16 @@ public class Debt extends Process implements MeasurableInRubles{
 
     public void setDeadLine(LocalDateTime localDateTime) throws FileNotFoundException {
         this.deadline = localDateTime;
-        add(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
+        addMessage(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
     }
     public void iGive (float amount) throws FileNotFoundException {
         balance = balance + amount;
-        add(ServiceMessages.IGV.toString() + " " + amount);
+        addMessage(ServiceMessages.IGV.toString() + " " + amount);
     }
 
     public void iTake (float amount) throws FileNotFoundException {
         balance = balance - amount;
-        add(ServiceMessages.ITK.toString() + " " + amount);
+        addMessage(ServiceMessages.ITK.toString() + " " + amount);
     }
 
     @Override

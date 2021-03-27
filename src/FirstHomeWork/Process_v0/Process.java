@@ -58,7 +58,8 @@ public abstract class Process {
     public Process(Process process) throws FileNotFoundException {
         reason = process;
         logBook = new LinkedList<>();
-        Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), ServiceMessages.OPN.toString() + " " + process.id);
+        Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), ServiceMessages.OPN.toString() +
+                " " + reason.id);
         logBook.add(message);
         LocalDateTime localDateTime = logBook.get(0).getDate();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
@@ -71,7 +72,7 @@ public abstract class Process {
      * @param string любое текстовое сообщение
      */
 
-    public void add(String string) throws FileNotFoundException {
+    public void addMessage(String string) throws FileNotFoundException {
         Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), string);
         logBook.add(message);
         addMessageToDataBase(message);

@@ -20,12 +20,12 @@ public class Person extends Process implements HavingName {
 
     public void setName(String string) throws FileNotFoundException {
         this.name = string;
-        add(ServiceMessages.SNM.toString() + " " + this.name);
+        addMessage(ServiceMessages.SNM.toString() + " " + this.name);
     }
 
     public Debt getNewDebt() throws FileNotFoundException {
         Debt debt = new Debt(this);
-        add(ServiceMessages.NDB.toString() + " " + debt.id);
+        addMessage(ServiceMessages.NDB.toString() + " " + debt.id);
         return debt;
     }
 

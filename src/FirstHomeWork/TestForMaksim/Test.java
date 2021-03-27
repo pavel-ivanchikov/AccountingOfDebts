@@ -44,25 +44,26 @@ public class Test {
         System.out.println("Тест начался");
         MyLife myLife = new MyLife();
         TimeUnit.SECONDS.sleep(1);
-        myLife.add("Это уже второе сообщение в журнале MyLife");
+        myLife.addMessage("Это уже второе сообщение в журнале MyLife");
         Person person = myLife.getNewPerson();
         TimeUnit.SECONDS.sleep(1);
-        person.add("Всё касается этого человека буду писать сюда");
-        myLife.add("В жунал Persona я буду записывать всё что его касается, " +
+        person.addMessage("Всё касается этого человека буду писать сюда");
+        myLife.addMessage("В жунал Persona я буду записывать всё что его касается, " +
                 "а сюда я буду записывать все остальные мысли");
         person.setName("Alex");
-        person.add("Ой, случайно не то имя набрал...");
+        person.addMessage("Ой, случайно не то имя набрал...");
         person.setName("Paul");
         Debt debt = person.getNewDebt();
-        debt.add("Он скоро собирается взять в долг, " +
+        debt.addMessage("Он скоро собирается взять в долг, " +
                 "создам процесс заранее");
         TimeUnit.SECONDS.sleep(1);
         debt.iGive(1800);
         debt.setDeadLine(LocalDateTime.now());
-        debt.add("Я дал ему деньги наликом, " +
+        debt.addMessage("Я дал ему деньги наликом, " +
                 "на остановке около метро площадь Мужества");
+        debt.addMessage("Было воскресенье, шёл снег");
         TimeUnit.SECONDS.sleep(1);
-        debt.iTake(1800);
+        debt.iTake(1600);
         //=======================================================================================
         System.out.println("создали первый процесс MyLife который породит все остальные процессы");
         System.out.println("MyLife породил процесс Person");
@@ -70,13 +71,14 @@ public class Test {
         System.out.println("Person породил процесс Debt");
         System.out.println("Определил сумму долга");
         System.out.println("Установил какой-то Дэдлайн");
+        System.out.println("Отдали часть долга");
         //=======================================================================================
         {
             Scanner in = new Scanner(System.in);
             System.out.println("Введите текс для добавления в журнал MyLife");
             String text = in.nextLine();
 
-            myLife.add(text);
+            myLife.addMessage(text);
 
             in.close();
         }

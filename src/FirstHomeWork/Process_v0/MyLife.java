@@ -18,7 +18,7 @@ public class MyLife extends Process {
      */
     public Person getNewPerson() throws FileNotFoundException {
         Person person = new Person(this);
-        add(ServiceMessages.NPR.toString() + " " + person.id);
+        addMessage(ServiceMessages.NPR.toString() + " " + person.id);
         return person;
     }
 //====================================================================================

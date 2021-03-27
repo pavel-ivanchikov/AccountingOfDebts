@@ -44,13 +44,13 @@ public class Test2 {
 
             for (int i = 0; i < 5; i++) {
                 Person somePerson = myLife.getNewPerson("Имя" + i);
-                arrayList1.add(somePerson);
+                arrayList1.addMessage(somePerson);
                 //Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
                 Debt debt1 = somePerson.getNewDebt();
-                arrayList1.add(debt1);
+                arrayList1.addMessage(debt1);
 //                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
                 Debt debt2 = somePerson.getNewDebt();
-                arrayList1.add(debt2);
+                arrayList1.addMessage(debt2);
             }
 
         } catch (NullPointerException e) {
@@ -66,16 +66,16 @@ public class Test2 {
 
             for (int i = 0; i < 3; i++) {
                 Person somePerson = myLife.getNewPerson("Имя" + i);
-                arrayList2.add(somePerson);
+                arrayList2.addMessage(somePerson);
                 //Debt debt1 = somePerson.getNewDebt((i + 1) * 100);
                 Debt debt1 = somePerson.getNewDebt();
-                arrayList2.add(debt1);
+                arrayList2.addMessage(debt1);
 //                Debt debt2 = somePerson.getNewDebt((i + 1) * 200);
                 Debt debt2 = somePerson.getNewDebt();
-                arrayList2.add(debt2);
+                arrayList2.addMessage(debt2);
 //                Debt debt3 = somePerson.getNewDebt((i + 1) * 300);
                 Debt debt3 = somePerson.getNewDebt();
-                arrayList2.add(debt3);
+                arrayList2.addMessage(debt3);
             }
 
         } catch (NullPointerException e) {
