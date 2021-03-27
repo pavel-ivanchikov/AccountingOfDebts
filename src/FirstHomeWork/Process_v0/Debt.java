@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
 
 /**
- * Class represents debt process from certain person, reason process.
  * В этот процесс попадают сообщения касающиеся конкретного долга.
  */
 
@@ -44,24 +43,12 @@ public class Debt extends Process implements MeasurableInRubles{
         return deadline;
     }
 
-    /**
-     * method for "Дефолтное поведение (заданное в абстрактном классе)
-     * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
-     * @return дату старта в миллисекундах
-     */
     @Override
     public Long getMainInfo() {
         Person person = (Person) this.reason;
         System.out.println("id: " + id + " " + person.name +
                 " owes me " + balance + " to " + deadline.withNano(0));
         return this.id;
-    }
-
-    /**
-     * method for "Создать иерархию классов с абстрактным классом на вершине."
-     */
-    public void doSomething() {
-        System.out.println("Method of Debt");
     }
 
 }

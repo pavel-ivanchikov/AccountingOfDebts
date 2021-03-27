@@ -2,6 +2,7 @@ package FirstHomeWork.TestForMaksim;
 
 //import FirstHomeWork.Process_v0.LogBookReader;
 import FirstHomeWork.Process_v0.LogBookReaderSimple;
+//import FirstHomeWork.Process_v0.Process;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.Debt;
@@ -48,7 +49,7 @@ public class Test {
         Person person = myLife.getNewPerson();
         TimeUnit.SECONDS.sleep(1);
         person.addMessage("Всё касается этого человека буду писать сюда");
-        myLife.addMessage("В жунал Persona я буду записывать всё что его касается, " +
+        myLife.addMessage("В жунал человека я буду записывать всё что его касается, " +
                 "а сюда я буду записывать все остальные мысли");
         person.setName("Alex");
         person.addMessage("Ой, случайно не то имя набрал...");
@@ -64,6 +65,10 @@ public class Test {
         debt.addMessage("Было воскресенье, шёл снег");
         TimeUnit.SECONDS.sleep(1);
         debt.iTake(1600);
+        TimeUnit.SECONDS.sleep(1);
+        debt.iTake(200);
+        debt.addMessage("Долг отдал, всё окей.");
+        debt.getReason().addMessage("В этот раз не задержал, можно давать ему в будущем."); // это я записал в человека через долг
         //=======================================================================================
         System.out.println("создали первый процесс MyLife который породит все остальные процессы");
         System.out.println("MyLife породил процесс Person");
@@ -105,5 +110,6 @@ public class Test {
         System.out.println(" ");
         System.out.println("Имя человека: " + person.getName());
         System.out.println("Сколько должен: " + debt.getBalance());
+        System.out.println("ДэдЛайн: " + debt.getDeadline().withNano(0));
     }
 }

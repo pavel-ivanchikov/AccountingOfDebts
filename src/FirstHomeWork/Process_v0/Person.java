@@ -29,24 +29,11 @@ public class Person extends Process implements HavingName {
         return debt;
     }
 
-
-    /**
-     * method for "Дефолтное поведение (заданное в абстрактном классе)
-     * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
-     */
-
     @Override
     public Long getMainInfo() {
         System.out.println("id: " + id + " " +
                 name + " appeared in my system in " + logBook.get(0).getDate().withNano(0));
         return this.id;
-    }
-
-    /**
-     * method for "Создать иерархию классов с абстрактным классом на вершине."
-     */
-    public void doSomething() {
-        System.out.println("Method of Person");
     }
 
     public String getName() {

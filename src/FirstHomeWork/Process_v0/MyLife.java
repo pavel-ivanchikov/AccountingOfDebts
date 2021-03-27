@@ -21,12 +21,4 @@ public class MyLife extends Process {
         addMessage(ServiceMessages.NPR.toString() + " " + person.id);
         return person;
     }
-//====================================================================================
-    /**
-     * method for "Создать иерархию классов с абстрактным классом на вершине."
-     */
-    public void doSomething() {
-        System.out.println("do something");
-    }
-//====================================================================================
 }

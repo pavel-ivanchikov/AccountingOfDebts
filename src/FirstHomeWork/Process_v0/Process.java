@@ -44,27 +44,38 @@ public abstract class Process {
     /** Это главное свойство объекта процесс */
     List<Message<LocalDateTime, String>> logBook;
 
-    public Process() throws FileNotFoundException {
-        this.reason = null;
-        logBook = new LinkedList<>();
-        Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), ServiceMessages.OPN.toString() + " " + 0);
-        logBook.add(message);
-        LocalDateTime localDateTime = logBook.get(0).getDate();
+    Process() throws FileNotFoundException {
+        reason = null;
+
+        LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
         id = zonedDateTime.toInstant().toEpochMilli();
+
+        logBook = new LinkedList<>();
+
+        Message<LocalDateTime, String> message = new Message<>(localDateTime,
+                ServiceMessages.OPN.toString() + " " + 0);
+        logBook.add(message);
         addMessageToDataBase(message);
     }
 
-    public Process(Process process) throws FileNotFoundException {
+    Process(Process process) throws FileNotFoundException {
         reason = process;
-        logBook = new LinkedList<>();
-        Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), ServiceMessages.OPN.toString() +
-                " " + reason.id);
-        logBook.add(message);
-        LocalDateTime localDateTime = logBook.get(0).getDate();
+
+        LocalDateTime localDateTime = LocalDateTime.now();
         ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
         id = zonedDateTime.toInstant().toEpochMilli();
+
+        logBook = new LinkedList<>();
+
+        Message<LocalDateTime, String> message = new Message<>(localDateTime,
+                ServiceMessages.OPN.toString() + " " + reason.id);
+        logBook.add(message);
         addMessageToDataBase(message);
+    }
+
+    public Process getReason() {
+        return reason;
     }
 
     /**
@@ -84,31 +95,19 @@ public abstract class Process {
      */
 
 //============9 марта, 11 урок, 34:00 на записи
-    private void addMessageToDataBase(Message message) throws FileNotFoundException {
+    private void addMessageToDataBase(Message<LocalDateTime,String> message) throws FileNotFoundException {
         FileOutputStream fileOutputStream = new FileOutputStream("C:/" +
                 "DataBaseAccountingOfDebts/" + id.toString()+".txt",true);
         PrintWriter printWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(fileOutputStream)));
         printWriter.write(message.getDate().toString() + " ");
-        printWriter.write(message.getText().toString() + "\n");
+        printWriter.write(message.getText() + "\n");
         printWriter.flush();
         printWriter.close();
     }
 
-//======================================================
-    /**
-     * method for "Дефолтное поведение (заданное в абстрактном классе)
-     * переопределить в наследниках (один наследник останется с дефолтным поведением)..."
-     */
     public Long getMainInfo() {
         return this.id;
     }
-
-    /**
-     * method for "для чего-то из первой домашней работы"
-     */
-    public abstract void doSomething();
-
-//======================================================
 
     /**
      * класс сообщение, чтобы наполнять журнал.
