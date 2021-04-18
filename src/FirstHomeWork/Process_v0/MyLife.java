@@ -12,6 +12,13 @@ public class MyLife extends Process {
 
     public MyLife() throws FileNotFoundException {super();}
 
+    public MyLife(Long id) throws FileNotFoundException {
+        super(id);
+        //Нахожу файл
+        //Читаю по сообщению, заполняю логбук и другие поля.
+        //Нахожу файл
+    }
+
     /**
      * @return not necessarily new person in my life,
      * that i mention and it becomes separate entity since now

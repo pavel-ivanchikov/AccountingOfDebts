@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Процесс - это сущность, порождаемая другим процессом
  * и хранящая журнал комметариев (пометок), о том что проиходит в рамках этого процесса.
- * Пока буду называть эти комментарии(пометки) - сообщениями, служебными или рукописными.
+ * Буду называть эти комментарии(пометки) - сообщениями, служебными или рукописными.
  * Прошлое процесса неизменно, можно добавлять сообщения о прошлом только в настоящем.
  *
  * Следующий шаг: сделать загрузку по уже существующей базе текстовых сообщений.
@@ -28,7 +28,7 @@ import java.util.List;
  *  состоящий из следующих сообщений в каждом процессе добавлять самое старое из них.
  *  Поэтому можно пока не торопиться с добавлением функций пересечения и слияния,
  *  вроде как той проблемы, где инициализация происходит по нескольким потокам и это как-то
- *  мешает инициализации, не возникает, проблемы не возникает.
+ *  мешает инициализации, не возникает.
  *  Так что буду делать инициализацию по сообщениям, хронологически, держа в памяти все процессы
  *  которые сейчас находятся на стадии инициализации.
  */
@@ -74,6 +74,12 @@ public abstract class Process {
         addMessageToDataBase(message);
     }
 
+    Process(Long id) throws FileNotFoundException {
+        reason = null;
+        this.id = id;
+        logBook = new LinkedList<>();
+    }
+
     public Process getReason() {
         return reason;
     }
@@ -87,6 +93,11 @@ public abstract class Process {
         Message<LocalDateTime, String> message = new Message<>(LocalDateTime.now(), string);
         logBook.add(message);
         addMessageToDataBase(message);
+    }
+
+    public void addExistingMessage(LocalDateTime localDateTime, String string) throws FileNotFoundException {
+        Message<LocalDateTime, String> message = new Message<>(localDateTime, string);
+        logBook.add(message);
     }
 
     /**

@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
  * Добавляю новое сообщение в MyLife вводя его с клавиатуры(пока закоментил, мешает тестировать)
  */
 
-public class Test {
+public class FirstStart {
 
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
