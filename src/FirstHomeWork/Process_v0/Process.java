@@ -78,6 +78,7 @@ public abstract class Process {
         reason = null;
         this.id = id;
         logBook = new LinkedList<>();
+
     }
 
     public Process getReason() {

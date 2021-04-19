@@ -1,5 +1,6 @@
 package FirstHomeWork.TestForMaksim;
 
+import FirstHomeWork.Process_v0.DataBaseReader;
 import FirstHomeWork.Process_v0.LogBookReaderSimple;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Process;
@@ -26,27 +27,12 @@ public class SecondStart {
 
         MyLife myLife = new MyLife(id);
 
-        try (FileReader reader = new FileReader("C:/" +
-                "DataBaseAccountingOfDebts/" + id + ".txt"))
-        {
-            Scanner scanner = new Scanner(reader);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] strings = line.split(" ");
 
-                LocalDateTime localDateTime = LocalDateTime.parse(strings[0]);
-                String string = strings[1];
-                if (string != ServiceMessages.NPR.toString()) {
-                    for (int i = 2; i < strings.length; i++) {
-                        string += " " + strings[i];
-                    }
-                }
-                myLife.addExistingMessage(localDateTime,string);
-            }
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
+        // Пока просто переписал сообщения из файла в логбук, дальше буду идти по логбуку и выполнять команды, служенбные сообщения.
+        DataBaseReader dataBaseReader = new DataBaseReader();
+        dataBaseReader.read(myLife,id);
+
+
         LogBookReaderSimple lbr = new LogBookReaderSimple();
 
         lbr.read(myLife);
