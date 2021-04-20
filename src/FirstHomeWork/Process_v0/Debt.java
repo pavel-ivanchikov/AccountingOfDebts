@@ -4,6 +4,7 @@ import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import FirstHomeWork.interfaces.MeasurableInRubles;
 
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 
 public class Debt extends Process implements MeasurableInRubles{
 
-    float balance = 0;
+    BigDecimal balance = new BigDecimal(0);
     LocalDateTime deadline;
 
     //primary constructor
@@ -33,24 +34,24 @@ public class Debt extends Process implements MeasurableInRubles{
     }
 
 
-    public void iGive (float amount) throws FileNotFoundException {
-        balance = balance + amount;
+    public void iGive (BigDecimal amount) throws FileNotFoundException {
+        balance.add(amount);
         addMessage(ServiceMessages.IGV.toString() + " " + amount);
     }
-    public void iGiveInPast (float amount) {
-        balance = balance + amount;
+    public void iGiveInPast (BigDecimal amount) {
+        balance.add(amount);
     }
 
-    public void iTake (float amount) throws FileNotFoundException {
-        balance = balance - amount;
+    public void iTake (BigDecimal amount) throws FileNotFoundException {
+        balance.subtract(amount);
         addMessage(ServiceMessages.ITK.toString() + " " + amount);
     }
-    public void iTakeInPast (float amount){
-        balance = balance - amount;
+    public void iTakeInPast (BigDecimal amount){
+        balance.subtract(amount);;
     }
 
     @Override
-    public float getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 

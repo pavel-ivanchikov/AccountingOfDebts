@@ -7,11 +7,11 @@ import java.io.*;
 /**
  * Это Process, который описывает жизнь ведущего учёт долгов.
  */
-
 public class MyLife extends Process {
 
-    public MyLife() throws FileNotFoundException {super();}
-
+    public MyLife() throws FileNotFoundException {
+        super();
+    }
     public MyLife(Long id){
         super(id);
     }

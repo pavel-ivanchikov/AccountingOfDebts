@@ -1,21 +1,20 @@
 package FirstHomeWork.TestForMaksim;
 
-//import FirstHomeWork.Process_v0.LogBookReader;
 import FirstHomeWork.Process_v0.LogBookReaderSimple;
-//import FirstHomeWork.Process_v0.Process;
 import FirstHomeWork.Process_v0.MyLife;
 import FirstHomeWork.Process_v0.Person;
 import FirstHomeWork.Process_v0.Debt;
 
 
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * Цель проекта. Создать систему учёта долгов и должников и мыслей вокруг долгов.
+ * Цель проекта. Создать систему учёта долгов, должников и любых мыслей вокруг долгов.
  *
  * Функционал (use cases):
  * - сохранять любые мысли о долге, изменять баланс, дату возврата и т.д.
@@ -32,10 +31,7 @@ import java.util.concurrent.TimeUnit;
  *
  * Пока создаю примитивную систему, где есть всего один должник и у этого человека всего один долг.
  * Изменяю имя, ввожу сумму долга, устанавливаю дэдлайн и параллельно пишу сообщения то в один
- * процесс, то в другой.
- *
- * и кроме прочего:
- * Добавляю новое сообщение в MyLife вводя его с клавиатуры(пока закоментил, мешает тестировать)
+ * процесс, то в другой. И добавляю новое сообщение в MyLife вводя его с клавиатуры
  */
 
 public class FirstStart {
@@ -43,6 +39,7 @@ public class FirstStart {
     public static void main(String[] args) throws InterruptedException, FileNotFoundException {
 
         System.out.println("Тест начался");
+
         MyLife myLife = new MyLife();
         TimeUnit.SECONDS.sleep(1);
         myLife.addMessage("Это уже второе сообщение в журнале MyLife");
@@ -58,25 +55,28 @@ public class FirstStart {
         debt.addMessage("Он скоро собирается взять в долг, " +
                 "создам процесс заранее");
         TimeUnit.SECONDS.sleep(1);
-        debt.iGive(1800);
+        debt.iGive(new BigDecimal(1800));
         debt.setDeadLine(LocalDateTime.now());
         debt.addMessage("Я дал ему деньги наликом, " +
                 "на остановке около метро площадь Мужества");
         debt.addMessage("Было воскресенье, шёл снег");
         TimeUnit.SECONDS.sleep(1);
-        debt.iTake(1600);
+        debt.iTake(new BigDecimal(1600));
         TimeUnit.SECONDS.sleep(1);
-        debt.iTake(200);
+        debt.iTake(new BigDecimal(200));
         debt.addMessage("Долг отдал, всё окей.");
         debt.getReason().addMessage("В этот раз не задержал, можно давать ему в будущем."); // это я записал в человека через долг
         //=======================================================================================
+        System.out.println("Что уже произошло в системе: ");
         System.out.println("создали первый процесс MyLife который породит все остальные процессы");
         System.out.println("MyLife породил процесс Person");
-        System.out.println("Установил Имя у Пёрсона");
+        System.out.println("Установил Имя у Person");
         System.out.println("Person породил процесс Debt");
-        System.out.println("Определил сумму долга");
+        System.out.println("Дал в долг");
         System.out.println("Установил какой-то Дэдлайн");
-        System.out.println("Отдали часть долга");
+        System.out.println("Получил часть долга");
+        System.out.println("Получил остаток долга");
+        System.out.println("Написал отзыв в журнале Person");
         //=======================================================================================
         {
             Scanner in = new Scanner(System.in);
@@ -84,7 +84,6 @@ public class FirstStart {
             String text = in.nextLine();
 
             myLife.addMessage(text);
-
             in.close();
         }
         //=======================================================================================

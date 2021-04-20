@@ -11,5 +11,5 @@ public enum ServiceMessages {
     IGV, ITK, SDL,   // debt's
     NDB, SNM,        // person's
     NPR,             // myLife's
-    OPN, CLS    // common
+    OPN, //CLS    // common
 }

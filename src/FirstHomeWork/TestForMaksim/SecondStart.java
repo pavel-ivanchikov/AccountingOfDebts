@@ -29,6 +29,8 @@ public class SecondStart {
         for (Process process : list) {
             LogBookReaderSimple.read(process);
             System.out.println(" ");
+            System.out.println("id: " + process.getMainInfo());
+            System.out.println(" ");
         }
     }
 }

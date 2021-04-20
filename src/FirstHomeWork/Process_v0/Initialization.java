@@ -2,6 +2,7 @@ package FirstHomeWork.Process_v0;
 
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,11 +36,11 @@ public class Initialization {
                Person person = (Person) process;
                person.setNameInPast(name);
            } else if (strings[0].equals(ServiceMessages.IGV.toString())) {
-               float amount = Float.parseFloat(strings[1]);
+               BigDecimal amount = new BigDecimal(strings[1]);
                Debt debt = (Debt) process;
                debt.iGiveInPast(amount);
            } else if (strings[0].equals(ServiceMessages.ITK.toString())) {
-               float amount = Float.parseFloat(strings[1]);
+               BigDecimal amount = new BigDecimal(strings[1]);
                Debt debt = (Debt) process;
                debt.iTakeInPast(amount);
            } else if (strings[0].equals(ServiceMessages.SDL.toString())) {

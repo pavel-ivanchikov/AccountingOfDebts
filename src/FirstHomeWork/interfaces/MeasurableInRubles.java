@@ -1,8 +1,10 @@
 package FirstHomeWork.interfaces;
 
+import java.math.BigDecimal;
+
 public interface MeasurableInRubles {
 
-    float getBalance();
+    BigDecimal getBalance();
 
     default long getAnswer() {
         return 42;
