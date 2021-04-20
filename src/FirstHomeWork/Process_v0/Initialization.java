@@ -2,10 +2,7 @@ package FirstHomeWork.Process_v0;
 
 import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
-//import java.io.FileNotFoundException;
 import java.time.LocalDateTime;
-//import java.util.Iterator;
-//import java.util.LinkedList;
 import java.util.List;
 
 // этот класс должен проходится по журналу и выполнять все служеные сообщения.
@@ -14,8 +11,7 @@ public class Initialization {
    public static List<Process> run(List<Process> list, Process process, Long id) {
 
        // Переписал сообщения из файла в логбук, добавил процесс в список процессов.
-       DataBaseReader dataBaseReader = new DataBaseReader();
-       dataBaseReader.read(process,id);
+       DataBaseReader.read(process,id);
        list.add(process);
        Long next_id;
 
@@ -23,7 +19,7 @@ public class Initialization {
            String string = message.getText();
            String[] strings = string.split(" ");
 
-           // Служебное сообщение OPN не обрабатываю, поле причинного процесса заполняю в другом месте.
+           // Служебное сообщение OPN не обрабатываю, поле причинного процесса заполняю в NPR или в NDB.
            if (strings[0].equals(ServiceMessages.NPR.toString())) {
                next_id = Long.parseLong(strings[1]);
                Person person = new Person(next_id);

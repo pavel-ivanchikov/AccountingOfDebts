@@ -8,11 +8,7 @@ import java.util.Scanner;
 // этот класс имеет один метод, который переписывает из текстового документа в Журнал все сообщения без разбора
 public class DataBaseReader {
 
-    public DataBaseReader() {
-
-    }
-
-    public void read(Process process, long id) {
+    public static void read(Process process, long id) {
 
         try (FileReader reader = new FileReader("C:/" +
                 "DataBaseAccountingOfDebts/" + id + ".txt"))

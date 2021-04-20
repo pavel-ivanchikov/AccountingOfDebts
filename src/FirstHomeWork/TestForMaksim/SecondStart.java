@@ -2,10 +2,8 @@ package FirstHomeWork.TestForMaksim;
 
 import FirstHomeWork.Process_v0.*;
 import FirstHomeWork.Process_v0.Process;
-//import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
 import java.io.*;
-//import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -18,6 +16,7 @@ public class SecondStart {
         // Инициализирую сначала процесс МояЖизнь.
         // Для этого создаю конструктор для процесса с текстовым аргументом
 
+        //список процессов в хронологическом порядке.
         List<Process> list = new LinkedList<>();
         Long id = 1617390011183L;
         MyLife myLife = new MyLife(id);
