@@ -18,10 +18,19 @@ public class Person extends Process implements HavingName {
         super(parent);
     }
 
+    Person(Long id){
+        super(id);
+    }
+
     public void setName(String string) throws FileNotFoundException {
         this.name = string;
         addMessage(ServiceMessages.SNM.toString() + " " + this.name);
     }
+
+    public void setNameInPast(String string){
+        this.name = string;
+    }
+
 
     public Debt getNewDebt() throws FileNotFoundException {
         Debt debt = new Debt(this);

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class Debt extends Process implements MeasurableInRubles{
 
-    float balance;
+    float balance = 0;
     LocalDateTime deadline;
 
     //primary constructor
@@ -20,18 +20,33 @@ public class Debt extends Process implements MeasurableInRubles{
         super(parent);
     }
 
+    Debt(Long id){
+        super(id);
+    }
+
     public void setDeadLine(LocalDateTime localDateTime) throws FileNotFoundException {
         this.deadline = localDateTime;
         addMessage(ServiceMessages.SDL.toString() + " " + this.deadline.withNano(0));
     }
+    public void setDeadLineInPast(LocalDateTime localDateTime){
+        this.deadline = localDateTime;
+    }
+
+
     public void iGive (float amount) throws FileNotFoundException {
         balance = balance + amount;
         addMessage(ServiceMessages.IGV.toString() + " " + amount);
+    }
+    public void iGiveInPast (float amount) {
+        balance = balance + amount;
     }
 
     public void iTake (float amount) throws FileNotFoundException {
         balance = balance - amount;
         addMessage(ServiceMessages.ITK.toString() + " " + amount);
+    }
+    public void iTakeInPast (float amount){
+        balance = balance - amount;
     }
 
     @Override

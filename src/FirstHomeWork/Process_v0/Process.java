@@ -35,7 +35,8 @@ import java.util.List;
 
 public abstract class Process {
 
-    /** у каждого процесса есть причина, породивший его процесс */
+    /** У каждого процесса есть причина, породивший его процесс.
+    Когда процессы смогут пересекаться нужно сделать это поле списком процессов */
     Process reason;
 
     /** Это дата первого сообщения в журнале процесса */
@@ -74,11 +75,10 @@ public abstract class Process {
         addMessageToDataBase(message);
     }
 
-    Process(Long id) throws FileNotFoundException {
+    Process(Long id) {
         reason = null;
         this.id = id;
         logBook = new LinkedList<>();
-
     }
 
     public Process getReason() {
@@ -95,6 +95,8 @@ public abstract class Process {
         logBook.add(message);
         addMessageToDataBase(message);
     }
+
+    // метод используется при инициализации процесса
 
     public void addExistingMessage(LocalDateTime localDateTime, String string) throws FileNotFoundException {
         Message<LocalDateTime, String> message = new Message<>(localDateTime, string);

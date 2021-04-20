@@ -1,14 +1,12 @@
 package FirstHomeWork.TestForMaksim;
 
-import FirstHomeWork.Process_v0.DataBaseReader;
-import FirstHomeWork.Process_v0.LogBookReaderSimple;
-import FirstHomeWork.Process_v0.MyLife;
+import FirstHomeWork.Process_v0.*;
 import FirstHomeWork.Process_v0.Process;
-import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
+//import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 
 import java.io.*;
-import java.time.LocalDateTime;
-import java.util.Scanner;
+//import java.time.LocalDateTime;
+import java.util.*;
 
 /**
  * Читаю из базы данных уже созданные раннее процессы и готовлю систему для продолжения ведения учёта.
@@ -17,26 +15,21 @@ import java.util.Scanner;
 public class SecondStart {
 
     public static void main(String[] args) throws FileNotFoundException{
-
         // Инициализирую сначала процесс МояЖизнь.
-        // Для этого создаю конструктор для процесса с текстовым аргументом.
-        // Пишу пока логику чтения процесса тут, потом вынесу это в одельный документ
-        // Пока пишу инициализацию только для MyLife
+        // Для этого создаю конструктор для процесса с текстовым аргументом
 
+        List<Process> list = new LinkedList<>();
         Long id = 1617390011183L;
-
         MyLife myLife = new MyLife(id);
 
+        //метод run итеративный, внутри он вызывает сам себя когда доходит до сообщения о создании процесса.
+        list = Initialization.run(list, myLife, id);
 
-        // Пока просто переписал сообщения из файла в логбук, дальше буду идти по логбуку и выполнять команды, служенбные сообщения.
-        DataBaseReader dataBaseReader = new DataBaseReader();
-        dataBaseReader.read(myLife,id);
+        list.get(0).addMessage("добавляю после загрузки");
 
-
-        LogBookReaderSimple lbr = new LogBookReaderSimple();
-
-        lbr.read(myLife);
-        System.out.println(" ");
-
+        for (Process process : list) {
+            LogBookReaderSimple.read(process);
+            System.out.println(" ");
+        }
     }
 }

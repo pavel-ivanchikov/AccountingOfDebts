@@ -92,14 +92,11 @@ public class FirstStart {
         System.out.println("Вывожу все 3 логбука которые есть");
         System.out.println(" ");
 
-//        LogBookReader lbr = new LogBookReader();
-        LogBookReaderSimple lbr = new LogBookReaderSimple();
-
-        lbr.read(myLife);
+        LogBookReaderSimple.read(myLife);
         System.out.println(" ");
-        lbr.read(person);
+        LogBookReaderSimple.read(person);
         System.out.println(" ");
-        lbr.read(debt);
+        LogBookReaderSimple.read(debt);
 
         System.out.println(" ");
         System.out.println("MainInfo обо всех трёх процессах");
