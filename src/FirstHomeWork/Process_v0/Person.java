@@ -12,7 +12,7 @@ import java.io.*;
  */
 public class Person extends Process implements HavingName {
 
-    String name;
+    private String name;
 
     Person(Process parent) throws FileNotFoundException{
         super(parent);

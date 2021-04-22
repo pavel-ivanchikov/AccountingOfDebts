@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 
 public class Debt extends Process implements MeasurableInRubles{
 
-    BigDecimal balance = new BigDecimal(0);
-    LocalDateTime deadline;
+    private BigDecimal balance = new BigDecimal(0);
+    private LocalDateTime deadline;
 
     //primary constructor
     Debt(Process parent) throws FileNotFoundException {
@@ -35,19 +35,19 @@ public class Debt extends Process implements MeasurableInRubles{
 
 
     public void iGive (BigDecimal amount) throws FileNotFoundException {
-        balance.add(amount);
+        balance = balance.add(amount);
         addMessage(ServiceMessages.IGV.toString() + " " + amount);
     }
     public void iGiveInPast (BigDecimal amount) {
-        balance.add(amount);
+        balance = balance.add(amount);
     }
 
     public void iTake (BigDecimal amount) throws FileNotFoundException {
-        balance.subtract(amount);
+        balance = balance.subtract(amount);
         addMessage(ServiceMessages.ITK.toString() + " " + amount);
     }
     public void iTakeInPast (BigDecimal amount){
-        balance.subtract(amount);;
+        balance = balance.subtract(amount);
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Debt extends Process implements MeasurableInRubles{
     @Override
     public Long getMainInfo() {
         Person person = (Person) this.reason;
-        System.out.println("id: " + id + " " + person.name +
+        System.out.println("id: " + id + " " + person.getName() +
                 " owes me " + balance + " to " + deadline.withNano(0));
         return this.id;
     }

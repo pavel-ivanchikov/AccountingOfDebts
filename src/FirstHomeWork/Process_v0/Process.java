@@ -37,13 +37,13 @@ public abstract class Process {
 
     /** У каждого процесса есть причина, породивший его процесс.
     Когда процессы смогут пересекаться нужно сделать это поле списком процессов */
-    Process reason;
+    protected Process reason;
 
     /** Это дата первого сообщения в журнале процесса */
-    Long id;
+    protected Long id;
 
     /** Это главное свойство объекта процесс */
-    List<Message<LocalDateTime, String>> logBook;
+    protected List<Message<LocalDateTime, String>> logBook;
 
     Process() throws FileNotFoundException {
         reason = null;

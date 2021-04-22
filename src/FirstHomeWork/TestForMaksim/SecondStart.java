@@ -24,9 +24,8 @@ public class SecondStart {
         //метод run итеративный, внутри он вызывает сам себя когда доходит до сообщения о создании процесса.
         list = Initialization.run(list, myLife, id);
 
-        list.get(0).addMessage("добавляю после загрузки");
-
         for (Process process : list) {
+            process.addMessage("сегодня 22 апреля, тестирую систему.");
             LogBookReaderSimple.read(process);
             System.out.println(" ");
             System.out.println("id: " + process.getMainInfo());
