@@ -8,6 +8,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Процесс - это сущность, порождаемая другим процессом
@@ -34,6 +35,18 @@ import java.util.List;
  */
 
 public abstract class Process {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Process process = (Process) o;
+        return Objects.equals(reason, process.reason) && id.equals(process.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(reason, id);
+    }
 
     /** У каждого процесса есть причина, породивший его процесс.
     Когда процессы смогут пересекаться нужно сделать это поле списком процессов */
