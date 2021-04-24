@@ -40,7 +40,8 @@ public class FirstStart {
 
         System.out.println("Тест начался");
 
-        MyLife myLife = new MyLife();
+        //MyLife myLife = new MyLife();
+        MyLife myLife = MyLife.getMyLife();
         TimeUnit.SECONDS.sleep(1);
         myLife.addMessage("Это уже второе сообщение в журнале MyLife");
         Person person = myLife.getNewPerson();

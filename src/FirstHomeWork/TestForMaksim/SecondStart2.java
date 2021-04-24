@@ -3,6 +3,7 @@ package FirstHomeWork.TestForMaksim;
 import FirstHomeWork.Process_v0.*;
 import FirstHomeWork.Process_v0.Process;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -11,15 +12,15 @@ import java.util.*;
 
 public class SecondStart2 {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
 
         //список процессов в хронологическом порядке.
         List<Process> list = new LinkedList<>();
 
         // Инициализирую сначала процесс МояЖизнь.
         Long id = 1617390011183L;
-        MyLife myLife = new MyLife(id);
-
+        MyLife myLife = MyLife.getMyLife(id);
+        //MyLife myLife = new MyLife(id);
 
         //метод run итеративный, внутри он вызывает сам себя когда доходит до сообщения о создании процесса.
         list = Initialization.run(list, myLife, id);

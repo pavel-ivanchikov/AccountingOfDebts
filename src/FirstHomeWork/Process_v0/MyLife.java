@@ -5,15 +5,43 @@ import FirstHomeWork.Process_v0.ServiceMessages.ServiceMessages;
 import java.io.*;
 
 /**
- * Это Process, который описывает жизнь ведущего учёт долгов.
+ * Это Process, который описывает жизнь ведущего учёт долгов. Он может быть только один.
  */
 public class MyLife extends Process {
 
-    public MyLife() throws FileNotFoundException {
+    private static MyLife instance;
+
+    private MyLife() throws FileNotFoundException {
         super();
     }
-    public MyLife(Long id){
+    private MyLife(Long id){
         super(id);
+    }
+
+    public static MyLife getMyLife() throws FileNotFoundException {
+        MyLife localInstance = instance;
+        if (localInstance == null) {
+            synchronized (MyLife.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new MyLife();
+                }
+            }
+        }
+        return localInstance;
+    }
+
+    public static MyLife getMyLife(Long id){
+        MyLife localInstance = instance;
+        if (localInstance == null) {
+            synchronized (MyLife.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new MyLife(id);
+                }
+            }
+        }
+        return localInstance;
     }
 
     /**

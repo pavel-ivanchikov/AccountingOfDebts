@@ -20,7 +20,8 @@ public class SecondStart {
 
         // Инициализирую сначала процесс МояЖизнь.
         Long id = 1617390011183L;
-        MyLife myLife = new MyLife(id);
+        MyLife myLife = MyLife.getMyLife(id);
+        //MyLife myLife = new MyLife(id);
 
 
         //метод run итеративный, внутри он вызывает сам себя когда доходит до сообщения о создании процесса.

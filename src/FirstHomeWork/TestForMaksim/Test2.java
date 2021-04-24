@@ -32,7 +32,9 @@ public class Test2 {
 
     public static void main(String[] args) throws NullPointerException, FileNotFoundException {
         // Создаём перевый процесс, которые пораждает все остальные
-        MyLife myLife = new MyLife();
+        //MyLife myLife = new MyLife();
+        MyLife myLife = MyLife.getMyLife();
+
 
 
         // Создаю первый список
