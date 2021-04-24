@@ -3,17 +3,15 @@ package FirstHomeWork.TestForMaksim;
 import FirstHomeWork.Process_v0.*;
 import FirstHomeWork.Process_v0.Process;
 
-import java.io.*;
-import java.math.BigDecimal;
 import java.util.*;
 
 /**
  * Читаю из базы данных уже созданные раннее процессы и готовлю систему для продолжения ведения учёта.
  */
 
-public class SecondStart {
+public class SecondStart2 {
 
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args){
 
         //список процессов в хронологическом порядке.
         List<Process> list = new LinkedList<>();
@@ -26,18 +24,21 @@ public class SecondStart {
         //метод run итеративный, внутри он вызывает сам себя когда доходит до сообщения о создании процесса.
         list = Initialization.run(list, myLife, id);
 
+        System.out.println(list.get(1).toString());
 
-        // Тут Paul занимает у меня ещё 100 рублей.
+        Person person = (Person) list.get(1);
         Debt debt = (Debt) list.get(2);
-        debt.iGive(new BigDecimal(100));
 
 
-        for (Process process : list) {
-//            process.addMessage("сегодня уже 23 апреля, тестирую систему, дал в долг ещё 100 рублей.");
-            LogBookReaderSimple.read(process);
-            System.out.println(" ");
-            System.out.println("id: " + process.getMainInfo());
-            System.out.println(" ");
-        }
+        System.out.println(myLife.toString());
+        System.out.println(person.toString());
+        System.out.println(debt.toString());
+
+//        for (Process process : list) {
+//            LogBookReaderSimple.read(process);
+//            System.out.println(" ");
+//            System.out.println("id: " + process.getMainInfo());
+//            System.out.println(" ");
+//        }
     }
 }

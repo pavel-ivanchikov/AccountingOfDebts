@@ -67,4 +67,16 @@ public class Debt extends Process implements MeasurableInRubles{
         return this.id;
     }
 
+    @Override
+    public String toString() {
+        return "Debt{" +
+                "balance='" + balance + '\'' +
+                '}' +
+                '{' +
+                "deadLine='" + deadline + '\'' +
+                '}' +
+                '{' +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

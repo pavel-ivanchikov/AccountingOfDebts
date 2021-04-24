@@ -25,4 +25,11 @@ public class MyLife extends Process {
         addMessage(ServiceMessages.NPR.toString() + " " + person.id);
         return person;
     }
+
+    @Override
+    public String toString() {
+        return "MyLife{" +
+                "keep records since " + logBook.get(0).getDate().withNano(0) +
+                '}';
+    }
 }

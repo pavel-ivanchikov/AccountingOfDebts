@@ -35,18 +35,6 @@ import java.util.Objects;
  */
 
 public abstract class Process {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Process process = (Process) o;
-        return Objects.equals(reason, process.reason) && id.equals(process.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(reason, id);
-    }
 
     /** У каждого процесса есть причина, породивший его процесс.
     Когда процессы смогут пересекаться нужно сделать это поле списком процессов */
@@ -138,8 +126,9 @@ public abstract class Process {
 
     /**
      * класс сообщение, чтобы наполнять журнал.
+     * Поставил модификатор protected чтобы доступ был в пакете и для наследников.
      */
-    static class Message<LocalDateTime, String> {
+    protected static class Message<LocalDateTime, String> {
         private final LocalDateTime date;
         private final String text;
         public Message(LocalDateTime date, String text){
@@ -149,4 +138,19 @@ public abstract class Process {
         public LocalDateTime getDate(){ return date; }
         public String getText(){ return text; }
     }
+
+    // Процессы не могут быть равны, даже если у них одинаковые милисекунды создания, id, у них будет разный причинный процесс, reason.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Process process = (Process) o;
+        return Objects.equals(reason, process.reason) && id.equals(process.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(reason, id);
+    }
+
 }

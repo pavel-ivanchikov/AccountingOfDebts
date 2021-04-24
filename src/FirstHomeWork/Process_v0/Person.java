@@ -49,4 +49,13 @@ public class Person extends Process implements HavingName {
         return this.name;
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                '}' +
+                '{' +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

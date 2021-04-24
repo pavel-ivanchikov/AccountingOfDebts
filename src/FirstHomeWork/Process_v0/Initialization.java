@@ -16,6 +16,7 @@ public class Initialization {
        list.add(process);
        Long next_id;
 
+
        for (Process.Message<LocalDateTime, String> message : process.logBook) {
            String string = message.getText();
            String[] strings = string.split(" ");
